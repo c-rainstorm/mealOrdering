@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mysql>
+	<host>localhost</host>
+	<port>3306</port>
+	<database>mealordering</database>
+	<username>root</username>
+	<password>root</password>
+</mysql>
