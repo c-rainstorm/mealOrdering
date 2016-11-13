@@ -15,246 +15,83 @@
 ##  1. <a name=''></a>仓库目录结构介绍
 
 ```
-│  .gitignore
-│  LICENSE
-│  README.md
-│  
-├─src
-│  └─com
-│      └─chenswe
-│          ├─adminmanager
-│          │  ├─action
-│          │  │      AdminLoginAction.java
-│          │  │      AdminLogoutAction.java
-│          │  │      
-│          │  ├─dao
-│          │  │  │  AdminDAO.java
-│          │  │  │  
-│          │  │  └─impl
-│          │  │          AdminDAOImpl.java
-│          │  │          
-│          │  ├─entity
-│          │  │      Admin.java
-│          │  │      
-│          │  └─service
-│          │      │  AdminService.java
-│          │      │  
-│          │      └─impl
-│          │              AdminServiceImpl.java
-│          │              
-│          ├─filter
-│          │      Character.java
-│          │      CheckLogin.java
-│          │      SellerFore.java
-│          │      
-│          ├─ordermanager
-│          │  ├─action
-│          │  │      FinishOrderAction.java
-│          │  │      GetOrderDetailAction.java
-│          │  │      GetSellerOrderBriefAction.java
-│          │  │      SubmitOrderAction.java
-│          │  │      UpdateOrderStatusAction.java
-│          │  │      
-│          │  ├─dao
-│          │  │  │  OrderDAO.java
-│          │  │  │  
-│          │  │  └─impl
-│          │  │          OrderDAOImpl.java
-│          │  │          
-│          │  ├─entity
-│          │  │      FoodInOrder.java
-│          │  │      Order.java
-│          │  │      OrderBrief.java
-│          │  │      ShoppingCars.java
-│          │  │      
-│          │  └─service
-│          │      │  OrderService.java
-│          │      │  
-│          │      └─Impl
-│          │              OrderServiceImpl.java
-│          │              
-│          ├─sellermanager
-│          │  ├─action
-│          │  │      AddNewFoodAction.java
-│          │  │      ChangeFoodStatusAction.java
-│          │  │      ChangeStoreStatusAction.java
-│          │  │      CheckRegistrationIDAction.java
-│          │  │      CheckSellerPhoneAction.java
-│          │  │      DeleteFoodAction.java
-│          │  │      GetFoodBriefAction.java
-│          │  │      GetFoodsAction.java
-│          │  │      GetFoodsBriefAction.java
-│          │  │      GetSellerBriefAction.java
-│          │  │      GetSellerDetailAction.java
-│          │  │      GetSellerForeAction.java
-│          │  │      GetShoppingCarsAction.java
-│          │  │      GetStoreStatusAction.java
-│          │  │      ModifyFoodInfoAction.java
-│          │  │      SellerLoginAction.java
-│          │  │      SellerLogoutAction.java
-│          │  │      SellerSignupAction.java
-│          │  │      SetShoppingCarsAction.java
-│          │  │      UpdateSellerInfoAction.java
-│          │  │      
-│          │  ├─dao
-│          │  │  │  sellerDAO.java
-│          │  │  │  
-│          │  │  └─impl
-│          │  │          SellerDAOImpl.java
-│          │  │          
-│          │  ├─entity
-│          │  │      Food.java
-│          │  │      Seller.java
-│          │  │      SellerBrief.java
-│          │  │      
-│          │  └─service
-│          │      │  SellerService.java
-│          │      │  
-│          │      └─impl
-│          │              SellerServiceImpl.java
-│          │              
-│          ├─usermanager
-│          │  ├─action
-│          │  │      AddNewReceiverAction.java
-│          │  │      CheckPhoneAction.java
-│          │  │      CheckReceiverPhoneAction.java
-│          │  │      CheckUsernameAction.java
-│          │  │      GetReceiverInfoAction.java
-│          │  │      GetUserInfoAction.java
-│          │  │      GetUserOrderBriefAction.java
-│          │  │      ReceiverSetDefaultAction.java
-│          │  │      RemoveReceiverAction.java
-│          │  │      UpdateReceiverInfoAction.java
-│          │  │      UpdateUserPasswordAction.java
-│          │  │      UserLoginAction.java
-│          │  │      UserLogoutAction.java
-│          │  │      UserSignupAction.java
-│          │  │      
-│          │  ├─dao
-│          │  │  │  UserDAO.java
-│          │  │  │  
-│          │  │  └─impl
-│          │  │          UserDAOImpl.java
-│          │  │          
-│          │  ├─entity
-│          │  │      Receiver.java
-│          │  │      User.java
-│          │  │      
-│          │  └─service
-│          │      │  UserService.java
-│          │      │  
-│          │      └─impl
-│          │              UserServiceImpl.java
-│          │              
-│          └─util
-│                  DBConfig.java
-│                  DBUtil.java
-│                  StringUtil.java
-│                  
-└─WebContent
-    │  index.jsp
-    │  
-    ├─config
-    │      mysql.xml
-    │      
-    ├─META-INF
-    │      MANIFEST.MF
-    │      
-    ├─pages
-    │  ├─profiles
-    │  │      admin.jsp
-    │  │      confirm_order.jsp
-    │  │      home.jsp
-    │  │      seller_behind.jsp
-    │  │      seller_fore.jsp
-    │  │      user.jsp
-    │  │      
-    │  ├─signin
-    │  │      admin.jsp
-    │  │      seller.jsp
-    │  │      user.jsp
-    │  │      
-    │  └─signup
-    │          seller.jsp
-    │          user.jsp
-    │          
-    ├─style
-    │  ├─asignin
-    │  ├─ssignin
-    │  ├─usignin
-    │  │              
-    │  ├─bootstrap
-    │  │          
-    │  ├─css
-    │  │      add_to_card_reset.css
-    │  │      add_to_card_style.css
-    │  │      carousel.css
-    │  │      cover.css
-    │  │      dashboard.css
-    │  │      form-elements.css
-    │  │      signup.css
-    │  │      sticky-footer.css
-    │  │      summary.css
-    │  │      
-    │  ├─images
-    │  │  ├─backgrounds
-    │  │  │      1.jpg
-    │  │  │      1@2x.jpg
-    │  │  │      2.jpg
-    │  │  │      2@2x.jpg
-    │  │  │      3.jpg
-    │  │  │      3@2x.jpg
-    │  │  │      
-    │  │  ├─default
-    │  │  │      icon.png
-    │  │  │      
-    │  │  ├─foods
-    │  │  │      151.jpg
-    │  │  │      152.jpg
-    │  │  │      1526.jpg
-    │  │  │      default.jpg
-    │  │  │      
-    │  │  ├─sellers
-    │  │  │      default.jpg
-    │  │  │      
-    │  │  └─shopping_card
-    │  │          cd-icon-arrow-next.svg
-    │  │          cd-icon-select.svg
-    │  │          cd-icons-cart-close.svg
-    │  │          product-preview.png
-    │  │          
-    │  └─js
-    │  │      confirmOrderBackground.js
-    │  │      homeBackground.js
-    │  │      jquery-3.1.0.js
-    │  │      jquery.min.js
-    │  │      public.js
-    │  │      sellerBehindBackground.js
-    │  │      sellerForeBackground.js
-    │  │      sellerSignup.js
-    │  │      shopping_card.js
-    │  │      signup.js
-    │  │      url.min.js
-    │  │      userBackground.js
-    │  │      userSignup.js
-    │  │      
+|-- src
+|   `-- com
+|       `-- chenswe
+|           |-- adminmanager
+|           |   |-- action
+|           |   |-- dao
+|           |   |   `-- impl
+|           |   |-- entity
+|           |   `-- service
+|           |       `-- impl
+|           |-- filter
+|           |-- ordermanager
+|           |   |-- action
+|           |   |-- dao
+|           |   |   `-- impl
+|           |   |-- entity
+|           |   `-- service
+|           |       `-- Impl
+|           |-- sellermanager
+|           |   |-- action
+|           |   |-- dao
+|           |   |   `-- impl
+|           |   |-- entity
+|           |   `-- service
+|           |       `-- impl
+|           |-- usermanager
+|           |   |-- action
+|           |   |-- dao
+|           |   |   `-- impl
+|           |   |-- entity
+|           |   `-- service
+|           |       `-- impl
+|           `-- util
+`-- WebContent
+    |-- config
+    |-- META-INF
+    |-- pages
+    |   |-- profiles
+    |   |-- signin
+    |   `-- signup
+    |-- style
+    |   |-- asignin
+    |   |   `-- assets
+    |   |       |-- css
+    |   |       |-- font-awesome
+    |   |       |   |-- css
+    |   |       |   `-- fonts
+    |   |       `-- js
+    |   |-- bootstrap
+    |   |   |-- css
+    |   |   |-- fonts
+    |   |   `-- js
+    |   |-- css
+    |   |-- images
+    |   |   |-- backgrounds
+    |   |   |-- default
+    |   |   |-- foods
+    |   |   |-- sellers
+    |   |   `-- shopping_card
+    |   |-- js
+    |   |-- ssignin
+    |   |   `-- assets
+    |   |       |-- css
+    |   |       |-- font-awesome
+    |   |       |   |-- css
+    |   |       |   `-- fonts
+    |   |       `-- js
+    |   `-- usignin
+    |       `-- assets
+    |           |-- css
+    |           |-- font-awesome
+    |           |   |-- css
+    |           |   `-- fonts
+    |           `-- js
+    `-- WEB-INF
+        `-- lib
 
-    │                  
-    └─WEB-INF
-        │  web.xml
-        │  
-        └─lib
-                commons-fileupload-1.3.1.jar
-                commons-io-2.4.jar
-                druid-1.0.18-sources.jar
-                druid-1.0.18.jar
-                gson-2.6.2.jar
-                jdom-2.0.6.jar
-                jstl-1.2.jar
-                junit-4.10.jar
-                mysql-connector-java-5.1.38-bin.jar
-                servlet-api.jar
-                standard-1.1.2.jar
 ```
 
 - `src` 目录下存放后台 Java 源码。
