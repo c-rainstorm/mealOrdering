@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     var registrationID = $(".registrationID").html();
     if (registrationID == null || registrationID == ""
-        || !registrationID.match(/^\d{2}$/g))
+        || !registrationID.match(/^\d{15}$/g))
         return;
 
     $.get('../../GetSellerDetail.action', {

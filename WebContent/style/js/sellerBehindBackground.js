@@ -1,6 +1,6 @@
 $(document).ready(function () {
     var pageContent = "all";
-    var registrationID = $(".registrationID").html().substring(0, 2);
+    var registrationID = $(".registrationID").html().substring(0, 15);
     var storeStatus;
 
     $.get("../../getStoreStatus.action", {

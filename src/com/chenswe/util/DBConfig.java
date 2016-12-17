@@ -1,6 +1,7 @@
 package com.chenswe.util;
 
 import java.io.IOException;
+
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -8,95 +9,87 @@ import org.jdom2.input.SAXBuilder;
 
 /**
  * 
- * 该类作用为从xml配置文件中读取数据库的配置信息
- * 默认数据库为mysql
+ * 璇ョ被浣滅敤涓轰粠xml閰嶇疆鏂囦欢涓鍙栨暟鎹簱鐨勯厤缃俊鎭� 榛樿鏁版嵁搴撲负mysql
  * 
- * 配置文件在/WebContent/config/mysql.xml
+ * 閰嶇疆鏂囦欢鍦�/WebContent/config/mysql.xml
  * 
- * 可供配置的参数有
- * 		主机地址
- * 		端口号
- * 		数据库名称
- * 		数据库用户名
- * 		数据库密码
+ * 鍙緵閰嶇疆鐨勫弬鏁版湁 涓绘満鍦板潃 绔彛鍙� 鏁版嵁搴撳悕绉� 鏁版嵁搴撶敤鎴峰悕 鏁版嵁搴撳瘑鐮�
  * 
  * @author chen_swe
  *
  */
 public class DBConfig {
-	private String driver = "com.mysql.jdbc.Driver";
-	private String host;
-	private String port;
-	private String database;
-	private String username;
-	private String password;
-	
-	/**
-	 * 在初始化时从文件中获取配置并保存
-	 */
-	public DBConfig() {
-		SAXBuilder jdomBuilder = new SAXBuilder();
-		
-		try {
-			String configPath = DBConfig.class.getResource("/") + "../../WebContent/config/mysql.xml";
-			
-			
-			Document document = jdomBuilder.build(configPath);
-			
-			Element root = document.getRootElement();
-		
-			setHost(root.getChildText("host").trim());
-			setPort(root.getChildText("port").trim());
-			setDatabase(root.getChildText("database").trim());
-			setUsername(root.getChildText("username").trim());
-			setPassword(root.getChildText("password").trim());
-		} catch (JDOMException | IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
+    private String driver = "com.mysql.jdbc.Driver";
+    private String host;
+    private String port;
+    private String database;
+    private String username;
+    private String password;
 
-	public String getDriver() {
-		return driver;
-	}
+    /**
+     * 鍦ㄥ垵濮嬪寲鏃朵粠鏂囦欢涓幏鍙栭厤缃苟淇濆瓨
+     */
+    public DBConfig() {
+        SAXBuilder jdomBuilder = new SAXBuilder();
 
-	public String getHost() {
-		return host;
-	}
+        try {
+            String configPath = DBConfig.class.getResource("/") + "../../config/mysql.xml";
 
-	public void setHost(String host) {
-		this.host = host;
-	}
+            Document document = jdomBuilder.build(configPath);
 
-	public String getPort() {
-		return port;
-	}
+            Element root = document.getRootElement();
 
-	public void setPort(String port) {
-		this.port = port;
-	}
+            setHost(root.getChildText("host").trim());
+            setPort(root.getChildText("port").trim());
+            setDatabase(root.getChildText("database").trim());
+            setUsername(root.getChildText("username").trim());
+            setPassword(root.getChildText("password").trim());
+        } catch (JDOMException | IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-	public String getDatabase() {
-		return database;
-	}
+    public String getDriver() {
+        return driver;
+    }
 
-	public void setDatabase(String database) {
-		this.database = database;
-	}
+    public String getHost() {
+        return host;
+    }
 
-	public String getUsername() {
-		return username;
-	}
+    public void setHost(String host) {
+        this.host = host;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public String getPort() {
+        return port;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setPort(String port) {
+        this.port = port;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getDatabase() {
+        return database;
+    }
+
+    public void setDatabase(String database) {
+        this.database = database;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

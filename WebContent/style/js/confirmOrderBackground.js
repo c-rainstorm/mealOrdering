@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var registrationID = url("?registrationID");
     if (registrationID == null || registrationID == ""
-        || !registrationID.match(/^\d{2}$/g))
+        || !registrationID.match(/^\d{15}$/g))
         return;
 
     var loginStatus = true;
